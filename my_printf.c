@@ -1,5 +1,12 @@
 #include "holberton.h"
 
+/**
+ * _printf - print formatted string to stdout using variable number
+ * of arguments
+ * @format: format string to specify how to interpret unnamed arguments
+ *
+ * Return: number of bytes printed to stdout
+ */
 int _printf(const char *format, ...)
 {
 	va_list ap;

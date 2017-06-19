@@ -6,18 +6,43 @@
 #define PLUS_FLAG 0x4
 #define SPACE_FLAG 0x2
 #define ZERO_FLAG 0x1
-typedef struct spec {
+/**
+ * struct spec - Struct to hold format info for string conversion functions
+ * @flags: small integer used as a bitfield to store flags from format string
+ * @length: `l' of `\0' depending on whether `long' is found in length field
+ * @width: minimum number of characters to output +/- padding
+ * @prec: precision to print for floats, or bytes to print from string
+ * @stride: total amount of format info "digested" by format parser
+ * @func: function to use for printing next argument from `va_list'
+ */
+struct spec
+{
 	char flags;
 	char length;
 	int width;
 	int prec;
 	int stride;
 	int (*func)(struct spec *, va_list);
-} spec_t;
-typedef struct {
+};
+/**
+ * spec_t - typedef for struct `spec'
+ */
+typedef struct spec spec_t;
+/**
+ * struct conv_func - struct to hold format specifier symbol and
+ * associated string conversion function.
+ * @symbol: format string symbol (e.g. `s' or `d')
+ * @func: function to convert specified argument type
+ */
+struct conv_func
+{
 	char symbol;
 	int (*func)(spec_t *, va_list);
-} conv_func_t;
+};
+/**
+ * conv_func_t - typedef for struct `conv_func'
+ */
+typedef struct conv_func conv_func_t;
 void get_spec(const char *, spec_t *);
 int setflags(const char *, spec_t *);
 int setwidth(const char *, spec_t *);

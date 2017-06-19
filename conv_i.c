@@ -1,6 +1,13 @@
 #include "holberton.h"
 #define ABS(x) ((x) < 0 ? -1 * (x) : (x))
 
+/**
+ * conv_i - function to format printing a decimal integer
+ * @spec: struct containing information for formatting decimal
+ * @ap: variable argument list
+ *
+ * Return: Number of bytes printed
+ */
 int conv_i(spec_t *spec, va_list ap)
 {
 	char s[20], pad;
@@ -13,8 +20,7 @@ int conv_i(spec_t *spec, va_list ap)
 		n = va_arg(ap, int);
 	sign = (n < 0 ? -1 : 1);
 	i = 0;
-	do
-	{
+	do {
 		s[i] = ABS(n % 10) + '0';
 		n /= 10;
 		++i;

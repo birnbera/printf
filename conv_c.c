@@ -1,5 +1,12 @@
 #include "holberton.h"
 
+/**
+ * conv_c - function to format printing a single character
+ * @spec: struct containing formatting parameters
+ * @ap: variable argument list
+ *
+ * Return: Number of bytes printed
+ */
 int conv_c(spec_t *spec, va_list ap)
 {
 	int i, tbytes = 0;

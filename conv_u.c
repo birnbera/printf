@@ -1,18 +1,24 @@
 #include "holberton.h"
 
+/**
+ * conv_u - function to print formatted unsigned integer
+ * @spec: struct containing information on formatting of unsigned int
+ * @ap: variable argument list
+ *
+ * Return: Number of bytes printed
+ */
 int conv_u(spec_t *spec, va_list ap)
 {
 	char s[20], pad;
 	int i, j, tbytes;
-	long unsigned int n;
+	unsigned long int n;
 
 	if (spec->length == 'l')
-		n = va_arg(ap, long unsigned int);
+		n = va_arg(ap, unsigned long int);
 	else
 		n = va_arg(ap, unsigned int);
 	i = 0;
-	do
-	{
+	do {
 		s[i] = (n % 10) + '0';
 		n /= 10;
 		++i;
