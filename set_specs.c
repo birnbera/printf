@@ -1,13 +1,13 @@
-#include <holberton.h>
+#include "holberton.h"
 
-int setflags(char *format, spec_t *spec)
+int setflags(const char *format, spec_t *spec)
 {
 	int i = 0;
 	char c;
 
 	while ((c = format[i]))
 	{
-		switch c
+		switch (c)
 		{
 		case '-':
 		{
@@ -37,7 +37,7 @@ int setflags(char *format, spec_t *spec)
 	return (i);
 }
 
-int setwidth(char *format, spec_t *spec)
+int setwidth(const char *format, spec_t *spec)
 {
 	int i = 0, w = 0;
 	char c;
@@ -52,8 +52,9 @@ int setwidth(char *format, spec_t *spec)
 	return (i);
 }
 
-int setprec(char *format, spec_t *spec)
+int setprec(const char *format, spec_t *spec)
 {
+	char c;
 	int i = 0, p = 0;
 	if (format[i] == '.')
 	{
@@ -69,7 +70,7 @@ int setprec(char *format, spec_t *spec)
 	return (i);
 }
 
-int setlength(char *format, spec_t *spec)
+int setlength(const char *format, spec_t *spec)
 {
 	if (*format == 'l')
 	{
@@ -80,34 +81,39 @@ int setlength(char *format, spec_t *spec)
 	return (0);
 }
 
-int settype(char *format, spec_t *spec)
+int settype(const char *format, spec_t *spec)
 {
+	int i;
 	char c = *format;
 	conv_func_t conv_funcs[] =
 		{
 			{'%', conv_pc},
 			{'i', conv_i},
+			{'d', conv_i},
 			{'u', conv_u},
-			{'f', conv_f},
+/*			{'f', conv_f},
 			{'e', conv_e},
 			{'E', conv_E},
 			{'x', conv_x},
 			{'X', conv_X},
 			{'o', conv_o},
-			{'s', conv_s},
+*/			{'s', conv_s},
 			{'c', conv_c},
-			{'p', conv_p},
+/*			{'p', conv_p},
 			{'a', conv_a},
 			{'A', conv_A},
-			{'\0', NULL}
+*/			{'\0', NULL}
 		};
+	i = 0;
 	while (conv_funcs[i].symbol)
 	{
-		if (conv_func[i].symbol == c)
+		if (conv_funcs[i].symbol == c)
 		{
-			spec->func = conv_func[i].func;
-			break;
+			spec->func = conv_funcs[i].func;
+			return (1);
 		}
+		++i;
 	}
-	return (c != '\0');
+	spec->func = NULL;
+	return (0);
 }

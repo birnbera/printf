@@ -1,24 +1,29 @@
 #ifndef _HOLBERTON_H_
 #define _HOLBERTON_H_
 #include <stdarg.h>
-enum int {JUST_FLAG = 0x8, PLUS_FLAG = 0x4, SPACE_FLAG = 0x2, ZERO_FLAG = 0x1};
-typedef struct {
+#include <unistd.h>
+#define JUST_FLAG 0x8
+#define PLUS_FLAG 0x4
+#define SPACE_FLAG 0x2
+#define ZERO_FLAG 0x1
+typedef struct spec {
 	char flags;
 	char length;
 	int width;
 	int prec;
 	int stride;
-	int (*func)(spec_t *, va_list);
+	int (*func)(struct spec *, va_list);
 } spec_t;
 typedef struct {
 	char symbol;
 	int (*func)(spec_t *, va_list);
 } conv_func_t;
-int setflags(char *, spec_t *);
-int setwidth(char *, spec_t *);
-int setprec(char *, spec_t *);
-int setlength(char *, spec_t *);
-int settype(char *, spec_t *);
+void get_spec(const char *, spec_t *);
+int setflags(const char *, spec_t *);
+int setwidth(const char *, spec_t *);
+int setprec(const char *, spec_t *);
+int setlength(const char *, spec_t *);
+int settype(const char *, spec_t *);
 int conv_pc(spec_t *, va_list);
 int conv_i(spec_t *, va_list);
 int conv_u(spec_t *, va_list);

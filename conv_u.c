@@ -1,6 +1,6 @@
-#include <stdarg.h>
+#include "holberton.h"
 
-int conv_i(spec_t *spec, va_list ap)
+int conv_u(spec_t *spec, va_list ap)
 {
 	char s[20], pad;
 	int i, j, tbytes;

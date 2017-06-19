@@ -1,9 +1,9 @@
-void get_spec(char *format, spec_t *spec)
-{
-	char c;
-	int i;
+#include "holberton.h"
 
-	i = 0;
+void get_spec(const char *format, spec_t *spec)
+{
+	int i = 0;
+
 	i += setflags(format + i, spec);
 	i += setwidth(format + i, spec);
 	i += setprec(format + i, spec);

@@ -1,9 +1,9 @@
-#include <stdarg.h>
+#include "holberton.h"
 
 int conv_c(spec_t *spec, va_list ap)
 {
-	int i, tbytes;
-	char c = va_arg(ap, char);
+	int i, tbytes = 0;
+	int c = va_arg(ap, int);
 
 	i = spec->length;
 	if (spec->flags & JUST_FLAG)

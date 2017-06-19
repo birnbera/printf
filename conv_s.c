@@ -1,3 +1,5 @@
+#include "holberton.h"
+
 int conv_s(spec_t *spec, va_list ap)
 {
 	int tbytes = 0;
@@ -6,9 +8,9 @@ int conv_s(spec_t *spec, va_list ap)
 
 	if (prec)
 		while (*s && prec)
-			write(1, s, 1), ++tbytes;
+			write(1, s++, 1), ++tbytes;
 	else
 		while (*s)
-			write(1, s, 1), ++tbytes;
+			write(1, s++, 1), ++tbytes;
 	return (tbytes);
 }
