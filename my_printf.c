@@ -29,13 +29,13 @@ int _printf(const char *format, ...)
 			get_spec(format + i + 1, &spec);
 			if (spec.func == NULL)
 			{
-				if (format[i + 1])
-				{
-					write(1, &c, 1);
-					++n;
-					++i;
-					continue;
-				}
+				if (format[i + 1] == '\0')
+					break;
+				write(1, &c, 1);
+				++n;
+				++i;
+				continue;
+
 			}
 			n += spec.func(&spec, ap);
 			i += spec.stride + 1;
