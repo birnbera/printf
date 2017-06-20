@@ -25,10 +25,6 @@ int conv_u(spec_t *spec, va_list ap)
 	} while (n);
 	s[i] = '\0';
 	j = spec->width - i;
-	if (spec->flags & PLUS_FLAG)
-		write(1, "+", 1), --j, ++tbytes;
-	else if (spec->flags & SPACE_FLAG)
-		write(1, " ", 1), --j, ++tbytes;
 	if (spec->flags & JUST_FLAG)
 	{
 		while (--i >= 0)
