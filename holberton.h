@@ -52,6 +52,7 @@ int settype(const char *, spec_t *);
 int conv_pc(spec_t *, va_list);
 int conv_i(spec_t *, va_list);
 int conv_u(spec_t *, va_list);
+int conv_b(spec_t *, va_list);
 int conv_f(spec_t *, va_list);
 int conv_e(spec_t *, va_list);
 int conv_E(spec_t *, va_list);

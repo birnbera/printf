@@ -130,7 +130,7 @@ int settype(const char *format, spec_t *spec)
 			{'i', conv_i},
 			{'d', conv_i},
 			{'u', conv_u},
-
+			{'b', conv_b},
 /*
  *			{'f', conv_f},
  *			{'e', conv_e},
