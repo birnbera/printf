@@ -11,7 +11,7 @@ int conv_u(spec_t *spec, va_list ap)
 {
 	char s[20], pad;
 	int i, j, tbytes;
-	unsigned long int n;
+	unsigned long int n = 0;
 
 	if (spec->length == 'l')
 		n = va_arg(ap, unsigned long int);

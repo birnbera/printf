@@ -12,7 +12,7 @@ int conv_i(spec_t *spec, va_list ap)
 {
 	char s[20], pad;
 	int i, j, sign, tbytes;
-	long int n;
+	long int n = 0;
 
 	if (spec->length == 'l')
 		n = va_arg(ap, long int);
