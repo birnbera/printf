@@ -14,6 +14,8 @@ int _printf(const char *format, ...)
 	int n, i;
 	spec_t spec;
 
+	if (format == NULL)
+		return (0);
 	va_start(ap, format);
 	i = n = 0;
 	while ((c = format[i]))
