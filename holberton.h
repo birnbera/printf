@@ -2,6 +2,7 @@
 #define _HOLBERTON_H_
 #include <stdarg.h>
 #include <unistd.h>
+#define HASH_FLAG 0x10
 #define JUST_FLAG 0x8
 #define PLUS_FLAG 0x4
 #define SPACE_FLAG 0x2
@@ -65,6 +66,7 @@ int conv_c(spec_t *, va_list);
 int conv_p(spec_t *, va_list);
 int conv_a(spec_t *, va_list);
 int conv_A(spec_t *, va_list);
+int conv_r(spec_t *, va_list);
 int _isdigit(char);
 int write_hex(unsigned char);
 int isprintable(unsigned char);

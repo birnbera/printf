@@ -37,6 +37,11 @@ int setflags(const char *format, spec_t *spec)
 			spec->flags |= ZERO_FLAG;
 			break;
 		}
+		case '#':
+		{
+			spec->flags |= HASH_FLAG;
+			break;
+		}
 		default:
 			return (i);
 		}
@@ -142,6 +147,7 @@ int settype(const char *format, spec_t *spec)
 			{'s', conv_s},
 			{'S', conv_S},
 			{'c', conv_c},
+			{'r', conv_r},
 /*
  *			{'p', conv_p},
  *			{'a', conv_a},
