@@ -60,10 +60,13 @@ int conv_x(spec_t *, va_list);
 int conv_X(spec_t *, va_list);
 int conv_o(spec_t *, va_list);
 int conv_s(spec_t *, va_list);
+int conv_S(spec_t *, va_list);
 int conv_c(spec_t *, va_list);
 int conv_p(spec_t *, va_list);
 int conv_a(spec_t *, va_list);
 int conv_A(spec_t *, va_list);
 int _isdigit(char);
+int write_hex(unsigned char);
+int isprintable(unsigned char);
 int _printf(const char *format, ...);
 #endif /* _HOLBERTON_H_ */
