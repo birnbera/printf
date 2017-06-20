@@ -135,10 +135,10 @@ int settype(const char *format, spec_t *spec)
  *			{'f', conv_f},
  *			{'e', conv_e},
  *			{'E', conv_E},
- */			{'x', conv_x},
-			{'X', conv_X},
-/*			{'o', conv_o},
  */
+			{'x', conv_x},
+			{'X', conv_X},
+			{'o', conv_o},
 			{'s', conv_s},
 			{'S', conv_S},
 			{'c', conv_c},
