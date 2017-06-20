@@ -18,30 +18,20 @@ int setflags(const char *format, spec_t *spec)
 		switch (c)
 		{
 		case '-':
-		{
 			spec->flags |= JUST_FLAG;
 			break;
-		}
 		case '+':
-		{
 			spec->flags |= PLUS_FLAG;
 			break;
-		}
 		case ' ':
-		{
 			spec->flags |= SPACE_FLAG;
 			break;
-		}
 		case '0':
-		{
 			spec->flags |= ZERO_FLAG;
 			break;
-		}
 		case '#':
-		{
 			spec->flags |= HASH_FLAG;
 			break;
-		}
 		default:
 			return (i);
 		}
@@ -109,13 +99,18 @@ int setprec(const char *format, spec_t *spec)
  */
 int setlength(const char *format, spec_t *spec)
 {
-	if (*format == 'l')
+	switch (*format)
 	{
+	case 'l':
 		spec->length = 'l';
-		return (1);
+		break;
+	case 'h':
+		spec->length = 'h';
+		break;
+	default:
+		spec->length = '\0';
 	}
-	spec->length = '\0';
-	return (0);
+	return (spec->length != '\0');
 }
 /**
  * settype - after parsing flag, width, precision, and length fields,
