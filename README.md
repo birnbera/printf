@@ -3,10 +3,10 @@
 int _printf(const char *format, ...)
 
 ### Description ###
-A function that parses the format string to print to standard output and returns the number of characters printed, excluding the null byte used to end string output.  It shares most of the functionalities with the standard printf function from the C output library, with a few notable differences (see Usage).
+A function that parses the format string to print to standard output and returns the number of characters printed, excluding the null byte used to end string output.  It shares most of the functionalities with the standard printf function from the C output library, with a few notable differences (see Features).
 
 ### Installation ###
-User can clone the repository to their local branch and compile the files. (incldue gif or screenshot)
+User can clone the repository to their local branch and compile the files.
 
 ### Features ###
 The _printf function shares the following features as the standard printf function:
