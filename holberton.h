@@ -2,11 +2,17 @@
 #define _HOLBERTON_H_
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 #define HASH_FLAG 0x10
 #define JUST_FLAG 0x8
 #define PLUS_FLAG 0x4
 #define SPACE_FLAG 0x2
 #define ZERO_FLAG 0x1
+#define BUF_SIZE 1024
+
+extern char buf[BUF_SIZE];
+extern int buf_idx;
+
 /**
  * struct spec - Struct to hold format info for string conversion functions
  * @flags: small integer used as a bitfield to store flags from format string
@@ -71,4 +77,6 @@ int _isdigit(char);
 int write_hex(unsigned char);
 int isprintable(unsigned char);
 int _printf(const char *format, ...);
+int writetobuf(int, char *, int);
+int conv_base(char *, int, unsigned long int, ...);
 #endif /* _HOLBERTON_H_ */

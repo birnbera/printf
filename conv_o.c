@@ -37,7 +37,7 @@ int conv_o(spec_t *spec, va_list ap)
 			write(1, &pad, 1), ++tbytes;
 		if (spec->flags & HASH_FLAG)
 			write(1, "0", 1), ++tbytes;
-		else
+		else if (j)
 			write(1, &pad, 1), ++tbytes;
 		while (--i >= 0)
 			write(1, s + i, 1), ++tbytes;

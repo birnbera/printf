@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdlib.h>
 
 /**
  * conv_s - function to print a null-terminated string
@@ -11,8 +12,10 @@ int conv_s(spec_t *spec, va_list ap)
 {
 	int tbytes = 0;
 	int prec = spec->prec;
-	unsigned char *s = va_arg(ap, unsigned char *);
+	char *s = va_arg(ap, char *);
 
+	if (s == NULL)
+		s = "(null)";
 	if (prec)
 		while (*s && prec--)
 			write(1, s++, 1), ++tbytes;
