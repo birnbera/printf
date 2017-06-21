@@ -1,4 +1,4 @@
-#0x10. C - _printf#
+# 0x10. C - _printf #
 ### Prototype ###
 int _printf(const char *format, ...)
 
@@ -10,9 +10,9 @@ User can clone the repository to their local branch and compile the files. (incl
 
 ### Features ###
 The _printf function shares the following features as the standard printf function:
-* Conversion Specifier: c, s, i, d, p, u, o, x, X, S
-* Flag: -, +, ' ' (space), 0, #
-* Length Modifier: h, l
+* __Conversion Specifier__: c, s, i, d, p, u, o, x, X, S
+* __Flag__: -, +, ' ' (space), 0, #
+* __Length Modifier__: h, l
 
 The function also implements the width and precision as the standard printf function.
 
