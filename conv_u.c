@@ -15,6 +15,8 @@ int conv_u(spec_t *spec, va_list ap)
 
 	if (spec->length == 'l')
 		n = va_arg(ap, unsigned long int);
+	else if (spec->length == 'h')
+		n = (unsigned short int) va_arg(ap, unsigned int);
 	else
 		n = va_arg(ap, unsigned int);
 	i = 0;
