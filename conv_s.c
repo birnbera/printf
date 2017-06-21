@@ -14,7 +14,7 @@ int conv_s(spec_t *spec, va_list ap)
 	unsigned char *s = va_arg(ap, unsigned char *);
 
 	if (s == NULL)
-		return (0);
+		s = "(null)";
 	if (prec)
 		while (*s && prec--)
 			write(1, s++, 1), ++tbytes;
