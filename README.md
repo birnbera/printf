@@ -1,6 +1,6 @@
 # 0x10. C - _printf #
 ### Prototype ###
-*int _printf(const char *format, ...)*
+int _printf(const char *format, ...)
 
 ### Description ###
 A function that parses the format string to print to standard output and returns the number of characters printed, excluding the null byte used to end string output.  It shares most of the functionalities with the standard printf function from the C output library, with a few notable differences (see Usage).
@@ -21,5 +21,7 @@ The function offers additional conversion specifiers not present with the standa
 * *b* - convert the unsigned int argument to binary
 
 ### Credits ###
-* Andrew Birnberg (https://github.com/birnbera)
-* Tanya Kryukova (https://github.com/tanyastropheus)
+* Andrew Birnberg
+  * https://github.com/birnbera
+* Tanya Kryukova
+  * https://github.com/tanyastropheus
