@@ -143,9 +143,9 @@ int settype(const char *format, spec_t *spec)
 			{'S', conv_S},
 			{'c', conv_c},
 			{'r', conv_r},
-/*
- *			{'p', conv_p},
- *			{'a', conv_a},
+
+			{'p', conv_p},
+/*			{'a', conv_a},
  *			{'A', conv_A},
  */
 			{'\0', NULL}
