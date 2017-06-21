@@ -15,6 +15,8 @@ int conv_o(spec_t *spec, va_list ap)
 
 	if (spec->length == 'l')
 		n = va_arg(ap, unsigned long int);
+	else if (spec->length == 'h')
+		n = (unsigned short int) va_arg(ap, unsigned int);
 	else
 		n = va_arg(ap, unsigned int);
 	i = 0;
@@ -25,7 +27,7 @@ int conv_o(spec_t *spec, va_list ap)
 	} while (n);
 	s[i] = '\0';
 	j = spec->width - i;
-        if (spec->flags & JUST_FLAG)
+	if (spec->flags & JUST_FLAG)
 	{
 		if (spec->flags & HASH_FLAG)
 			write(1, "0", 1), ++tbytes, --j;
@@ -46,5 +48,5 @@ int conv_o(spec_t *spec, va_list ap)
 		while (--i >= 0)
 			write(1, s + i, 1), ++tbytes;
 	}
-        return (tbytes);
+	return (tbytes);
 }
