@@ -77,4 +77,5 @@ int write_hex(unsigned char);
 int isprintable(unsigned char);
 int _printf(const char *format, ...);
 int writetobuf(int, char *, int);
+int conv_base(char *, int, unsigned long int, ...);
 #endif /* _HOLBERTON_H_ */
