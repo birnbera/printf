@@ -19,16 +19,7 @@ int conv_x(spec_t *spec, va_list ap)
 		n = (unsigned short int) va_arg(ap, unsigned int);
 	else
 		n = va_arg(ap, unsigned int);
-	i = 0;
-	do {
-		if ((n % 16) < 10)
-			s[i] = (n % 16) + '0';
-		else
-			s[i] = ((n % 16) - 10) + 'a';
-		n /= 16;
-		++i;
-		} while (n);
-	s[i] = '\0';
+	i = conv_base(s, 16, n, 'a');
 	j = spec->width - i;
 	if (spec->flags & JUST_FLAG)
 	{
