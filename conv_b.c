@@ -15,7 +15,7 @@ int conv_b(spec_t *spec, va_list ap)
 
 	if (spec->length == 'l')
 		n = va_arg(ap, unsigned long int);
-	if (spec->length == 'h')
+	else if (spec->length == 'h')
 		n = (unsigned short int) va_arg(ap, unsigned int);
 	else
 		n = va_arg(ap, unsigned int);
