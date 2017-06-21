@@ -1,5 +1,8 @@
 #include "holberton.h"
 
+char buf[BUF_SIZE];
+int buf_idx = 0;
+
 /**
  * _printf - print formatted string to stdout using variable number
  * of arguments
@@ -22,19 +25,17 @@ int _printf(const char *format, ...)
 	{
 		if (c != '%')
 		{
-			write(1, &c, 1);
+			i += write(1, &c, 1);
 			++n;
-			++i;
 		}
 		else
 		{
 			get_spec(format + i + 1, &spec);
 			if (spec.func == NULL)
 			{
-				if (format[i + 1] == '\0')
+				if (format[i + spec.stride + 1] == '\0')
 					break;
-				write(1, &c, 1);
-				++n;
+				n += write(1, &c, 1);
 				++i;
 				continue;
 

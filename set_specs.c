@@ -13,6 +13,7 @@ int setflags(const char *format, spec_t *spec)
 	int i = 0;
 	char c;
 
+	spec->flags = 0;
 	while ((c = format[i]))
 	{
 		switch (c)
@@ -74,10 +75,11 @@ int setwidth(const char *format, spec_t *spec)
 int setprec(const char *format, spec_t *spec)
 {
 	char c;
-	int i = 0, p = 0;
+	int i = 0, p = -1;
 
 	if (format[i] == '.')
 	{
+		p = 0;
 		++i;
 		while ((c = format[i]) && _isdigit(c))
 		{
@@ -99,16 +101,20 @@ int setprec(const char *format, spec_t *spec)
  */
 int setlength(const char *format, spec_t *spec)
 {
-	switch (*format)
+	spec->length = '\0';
+	if (*format)
 	{
-	case 'l':
-		spec->length = 'l';
-		break;
-	case 'h':
-		spec->length = 'h';
-		break;
-	default:
-		spec->length = '\0';
+		switch (*format)
+		{
+		case 'l':
+			spec->length = 'l';
+			break;
+		case 'h':
+			spec->length = 'h';
+			break;
+		default:
+			spec->length = '\0';
+		}
 	}
 	return (spec->length != '\0');
 }
