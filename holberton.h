@@ -2,6 +2,7 @@
 #define _HOLBERTON_H_
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 #define HASH_FLAG 0x10
 #define JUST_FLAG 0x8
 #define PLUS_FLAG 0x4
