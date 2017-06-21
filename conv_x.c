@@ -15,8 +15,6 @@ int conv_x(spec_t *spec, va_list ap)
 
 	if (spec->length == 'l')
 		n = va_arg(ap, unsigned long int);
-	if (spec->length == 'h')
-		n = (unsigned short int) va_arg(ap, unsigned int);
 	else
 		n = va_arg(ap, unsigned int);
 	i = 0;
@@ -24,8 +22,8 @@ int conv_x(spec_t *spec, va_list ap)
 		if ((n % 16) < 10)
 			s[i] = (n % 16) + '0';
 		else
-			s[i] = ((n % 16) - 10) + 'a';
-		n /= 16;
+	       		s[i] = ((n % 16) - 10) + 'a';
+       		n /= 16;
 		++i;
 		} while (n);
 	s[i] = '\0';
