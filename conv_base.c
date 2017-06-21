@@ -28,6 +28,6 @@ int conv_base(char *s, int base, unsigned long int n, ...)
 		n /= base;
 		++i;
 	} while (n);
-
+	va_end(ap);
 	return (i);
 }
