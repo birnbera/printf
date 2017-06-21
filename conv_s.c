@@ -13,6 +13,8 @@ int conv_s(spec_t *spec, va_list ap)
 	int prec = spec->prec;
 	unsigned char *s = va_arg(ap, unsigned char *);
 
+	if (s == NULL)
+		return (0);
 	if (prec)
 		while (*s && prec--)
 			write(1, s++, 1), ++tbytes;
