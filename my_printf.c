@@ -1,7 +1,7 @@
 #include "holberton.h"
 
-char buf[BUF_SIZE];
-int buf_idx = 0;
+extern char buf[BUF_SIZE];
+extern unsigned int buf_idx;
 
 /**
  * _printf - print formatted string to stdout using variable number
@@ -20,30 +20,29 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (0);
 	va_start(ap, format);
-	i = n = 0;
-	while ((c = format[i]))
+	for (i = 0; (c = format[i]); ++i)
 	{
 		if (c != '%')
-		{
-			i += write(1, &c, 1);
-			++n;
-		}
+			writetobuf(&c, 1);
 		else
 		{
 			get_spec(format + i + 1, &spec);
 			if (spec.func == NULL)
 			{
-				if (format[i + spec.stride + 1] == '\0')
+				if (format[i + spec.stride] == '\0')
 					break;
-				n += write(1, &c, 1);
-				++i;
+				writetobuf(&c, 1);
 				continue;
 
 			}
-			n += spec.func(&spec, ap);
-			i += spec.stride + 1;
+			spec.func(&spec, ap);
+			i += spec.stride;
 		}
 	}
+	n = 0;
+	n = write(1, buf, buf_idx);
+	buf_idx = 0;
+	buf[buf_idx] = '\0';
 	va_end(ap);
 	return (n);
 }
