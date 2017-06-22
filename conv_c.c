@@ -17,15 +17,15 @@ int conv_c(spec_t *spec, va_list ap)
 	i = spec->length;
 	if (spec->flags & JUST_FLAG)
 	{
-		write(1, &c, 1), ++tbytes;
+		writetobuf(&c, 1);
 		while (--i >= 0)
-			write(1, " ", 1), ++tbytes;
+			writetobuf(" ", 1);
 	}
 	else
 	{
 		while (--i >= 0)
-			write(1, " ", 1), ++tbytes;
-		write(1, &c, 1), ++tbytes;
+			writetobuf(" ", 1);
+		writetobuf(&c, 1);
 	}
 	return (tbytes);
 }

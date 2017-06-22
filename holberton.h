@@ -10,9 +10,6 @@
 #define ZERO_FLAG 0x1
 #define BUF_SIZE 1024
 
-extern char buf[BUF_SIZE];
-extern int buf_idx;
-
 /**
  * struct spec - Struct to hold format info for string conversion functions
  * @flags: small integer used as a bitfield to store flags from format string
@@ -77,6 +74,6 @@ int _isdigit(char);
 int write_hex(unsigned char);
 int isprintable(unsigned char);
 int _printf(const char *format, ...);
-int writetobuf(int, char *, int);
+unsigned int writetobuf(char *, unsigned int);
 int conv_base(char *, int, unsigned long int, ...);
 #endif /* _HOLBERTON_H_ */

@@ -1,5 +1,7 @@
 #include "holberton.h"
 
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+
 /**
  * conv_r - print reversed string
  * @spec: struct containing formatting information for `conv_r'
@@ -9,17 +11,51 @@
  */
 int conv_r(spec_t *spec, va_list ap)
 {
-	int i, tbytes = 0;
+	int i, j, tbytes = 0;
 	int prec = spec->prec;
-	unsigned char *s = va_arg(ap, unsigned char *);
+	char *s = va_arg(ap, char *);
 
-	if (!prec)
-		prec = -1;
-	for (i = 0; s[i] && prec; ++i, --prec)
+	for (i = 0; s && s[i]; ++i)
 		;
-	--i;
-	if (prec)
-		while (s[i])
-			write(1, s + i--, 1), ++tbytes;
+	if (spec->flags & JUST_FLAG)
+	{
+		if (prec >= 0)
+		{
+			j = spec->width - MIN(prec, i);
+			while (--i >= 0 && --prec >= 0)
+				writetobuf(s + i, 1);
+			while (--j >=0)
+				writetobuf(" ", 1);
+
+		}
+		else
+		{
+			j = spec->width - i;
+			while (--i >= 0)
+				writetobuf(s + i, 1);
+			while (--j >= 0)
+				writetobuf(" ", 1);
+		}
+	}
+	else
+	{
+                if (prec >= 0)
+                {
+                        j = spec->width - MIN(prec, i);
+                        while (--j >=0)
+                                writetobuf(" ", 1);
+                        while (--i >= 0 && --prec >= 0)
+                                writetobuf(s + i, 1);
+
+                }
+                else
+                {
+                        j = spec->width - i;
+                        while (--j >= 0)
+                                writetobuf(" ", 1);
+                        while (--i >= 0)
+                                writetobuf(s + i, 1);
+                }
+	}
 	return (tbytes);
 }

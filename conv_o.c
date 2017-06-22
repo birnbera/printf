@@ -24,23 +24,23 @@ int conv_o(spec_t *spec, va_list ap)
 	if (spec->flags & JUST_FLAG)
 	{
 		if (spec->flags & HASH_FLAG)
-			write(1, "0", 1), ++tbytes, --j;
+			writetobuf("0", 1);
 		while (--i >= 0)
-			write(1, s + i, 1), ++tbytes;
+			writetobuf(s + i, 1);
 		while (--j >= 0)
-			write(1, " ", 1), ++tbytes;
+			writetobuf(" ", 1);
 	}
 	else
 	{
 		pad = (spec->flags & ZERO_FLAG ? '0' : ' ');
 		while (--j > 0)
-			write(1, &pad, 1), ++tbytes;
+			writetobuf(&pad, 1);
 		if (spec->flags & HASH_FLAG)
-			write(1, "0", 1), ++tbytes;
+			writetobuf("0", 1);
 		else if (j)
-			write(1, &pad, 1), ++tbytes;
+			writetobuf(&pad, 1);
 		while (--i >= 0)
-			write(1, s + i, 1), ++tbytes;
+			writetobuf(s + i, 1);
 	}
 	return (tbytes);
 }

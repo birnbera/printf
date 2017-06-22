@@ -16,11 +16,11 @@ int conv_s(spec_t *spec, va_list ap)
 
 	if (s == NULL)
 		s = "(null)";
-	if (prec)
+	if (prec >= 0)
 		while (*s && prec--)
-			write(1, s++, 1), ++tbytes;
+			writetobuf(s++, 1);
 	else
 		while (*s)
-			write(1, s++, 1), ++tbytes;
+			writetobuf(s++, 1);
 	return (tbytes);
 }

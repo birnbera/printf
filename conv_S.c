@@ -19,7 +19,7 @@ int conv_S(spec_t *spec, va_list ap)
 		while (*s && prec--)
 		{
 			if (isprintable(*s))
-				write(1, s++, 1), ++tbytes;
+				writetobuf(s++, 1);
 			else
 				tbytes += write_hex(*s++);
 		}
@@ -27,7 +27,7 @@ int conv_S(spec_t *spec, va_list ap)
 		while (*s)
 		{
 			if (isprintable(*s))
-				write(1, s++, 1), ++tbytes;
+				writetobuf(s++, 1);
 			else
 				tbytes += write_hex(*s++);
 		}
@@ -58,7 +58,7 @@ int write_hex(unsigned char c)
 {
 	unsigned char s[] = "\\x";
 
-	write(1, s, 2);
+	writetobuf(s, 2);
 	s[1] = c % 16;
 	if (s[1] > 9)
 		s[1] += 'A' - 10;
@@ -70,6 +70,6 @@ int write_hex(unsigned char c)
 		s[0] += 'A' - 10;
 	else
 		s[0] += '0';
-	write(1, s, 2);
+	writetobuf(s, 2);
 	return (4);
 }

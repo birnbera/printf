@@ -24,17 +24,17 @@ int conv_b(spec_t *spec, va_list ap)
 	if (spec->flags & JUST_FLAG)
 	{
 		while (--i >= 0)
-			write(1, s + i, 1), ++tbytes;
+			writetobuf(s + i, 1);
 		while (--j >= 0)
-			write(1, " ", 1), ++tbytes;
+			writetobuf(" ", 1);
 	}
 	else
 	{
 		pad = (spec->flags & ZERO_FLAG ? '0' : ' ');
 		while (--j >= 0)
-			write(1, &pad, 1), ++tbytes;
+			writetobuf(&pad, 1);
 		while (--i >= 0)
-			write(1, s + i, 1), ++tbytes;
+			writetobuf(s + i, 1);
 	}
 	return (tbytes);
 }

@@ -29,25 +29,25 @@ int conv_i(spec_t *spec, va_list ap)
 	j = spec->width - i;
 	tbytes = 0;
 	if (sign < 0)
-		write(1, "-", 1), --j, ++tbytes;
+		writetobuf("-", 1);
 	else if (spec->flags & PLUS_FLAG)
-		write(1, "+", 1), --j, ++tbytes;
+		writetobuf("+", 1);
 	else if (spec->flags & SPACE_FLAG)
-		write(1, " ", 1), --j, ++tbytes;
+		writetobuf(" ", 1);
 	if (spec->flags & JUST_FLAG)
 	{
 		while (--i >= 0)
-			write(1, s + i, 1), ++tbytes;
+			writetobuf(s + i, 1);
 		while (--j >= 0)
-			write(1, " ", 1), ++tbytes;
+			writetobuf(" ", 1);
 	}
 	else
 	{
 		pad = (spec->flags & ZERO_FLAG ? '0' : ' ');
 		while (--j >= 0)
-			write(1, &pad, 1), ++tbytes;
+			writetobuf(&pad, 1);
 		while (--i >= 0)
-			write(1, s + i, 1), ++tbytes;
+			writetobuf(s + i, 1);
 	}
 	return (tbytes);
 }

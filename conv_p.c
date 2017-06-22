@@ -18,29 +18,29 @@ int conv_p(spec_t *spec, va_list ap)
 	j = spec->width - i - 2;
 	if (spec->flags & JUST_FLAG)
 	{
-		write(1, "0x", 2), tbytes += 2;
+		writetobuf("0x", 2);
 		while (--i >= 0)
-			write(1, s + i, 1), ++tbytes;
+			writetobuf(s + i, 1);
 		while (--j >= 0)
-			write(1, " ", 1), ++tbytes;
+			writetobuf(" ", 1);
 	}
 	else
 	{
 		pad = (spec->flags & ZERO_FLAG ? '0' : ' ');
 		if (spec->flags & ZERO_FLAG)
 		{
-			write(1, "0x", 2), tbytes += 2;
+			writetobuf("0x", 2);
 			while (--j >= 0) /* width is greater than digits */
-				write(1, &pad, 1), ++tbytes; /* padding only */
+				writetobuf(&pad, 1); /* padding only */
 		}
 		else
 		{
 			while (--j >= 0) /* width is greater than digits */
-                                write(1, &pad, 1), ++tbytes; /* padding only */
-			write(1, "0x", 2), tbytes += 2;
+                                writetobuf(&pad, 1); /* padding only */
+			writetobuf("0x", 2);
 		}
 		while (--i >= 0)
-			write(1, s + i, 1), ++tbytes;
+			writetobuf(s + i, 1);
 	}
 	return (tbytes);
 }
